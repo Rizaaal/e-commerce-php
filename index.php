@@ -8,9 +8,14 @@
   <title>e-commerce</title>
 </head>
 <body>
+  <nav>
+    <ul>
+      <li><a href="">Home</a></li>
+      <li><a href="">carrello</a></li>
+    </ul>
+  </nav>
   <h1>Negozio</h1>
   <main>
-    <p>
       <?php 
         include 'Store.php';
 
@@ -27,53 +32,23 @@
           }
         }
         
-        class Store {
-          public $cart = [];
-          
-          public function getCartItem($id){
-            foreach ($this -> cart as $product){
-              if ($product -> id === $id){ return $product; }
-            }
-          }
-
-          public function addToCart($id){
-            if ($this -> getCartItem($id) !== NULL) { 
-              echo "error: product already inside cart <br>";
-              return; 
-            };
-            $productToPush = getProductById($id);
-            array_push($this -> cart, $productToPush);
-          }
-
-          public function removeFromCart($id){
-            if ($this -> getCartItem($id) === NULL) { 
-              echo "error: product does not exist <br>";
-              return; 
-            };
-
-            $length = count($this -> cart);
-            for ($i=0; $i < $length; $i++) { 
-              if ($this -> cart[$i] -> id === $id){
-                array_splice($this -> cart, $i, 1);
-                break;
-              }
-            }
-          }
-
-          function getCart(){
-            return $this -> cart;
-          }
-
-
-        }
 
         $Store = new Store();
-        $Store -> addToCart(1);
-        $Store -> addToCart(2);
-        // $Store -> removeFromCart(1);
-        var_dump($Store -> cart);
+        // $Store -> addToCart(1);
+        // $Store -> addToCart(2);
+        // $Store -> removeFromCart(4);
+        // foreach ($Store -> cart as $item) {
+          // echo $item -> id . ": " . $item -> title . "<br>";
+        // }
       ?>
-    </p>
+      <ul>
+        <?php foreach ($products as $product) : ?>
+          <div class="card">
+            <h2><?php echo $product -> title ?></h2>
+            <p><?php echo $product -> price . "€" ?></p>
+          </div>
+          <?php endforeach; ?>
+      </ul>
   </main>
 </body>
 </html>
