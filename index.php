@@ -50,7 +50,7 @@
             };
 
             $length = count($this -> cart);
-            for ($i=0; $i < $this -> cart; $i++) { 
+            for ($i=0; $i < $length; $i++) { 
               if ($this -> cart[$i] -> id === $id){
                 array_splice($this -> cart, $i, 1);
                 break;
