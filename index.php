@@ -44,6 +44,11 @@
           }
 
           public function removeFromCart($id){
+            if ($this -> getCartItem($id) === NULL) { 
+              echo "error: product does not exist <br>";
+              return; 
+            };
+
             $length = count($this -> cart);
             for ($i=0; $i < $this -> cart; $i++) { 
               if ($this -> cart[$i] -> id === $id){
