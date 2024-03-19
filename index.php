@@ -35,6 +35,10 @@
           }
 
           public function addToCart($id){
+            if ($this -> getCartItem($id) !== NULL) { 
+              echo "error: product already inside cart <br>";
+              return; 
+            };
             $productToPush = getProductById($id);
             array_push($this -> cart, $productToPush);
           }
