@@ -12,6 +12,8 @@
   <main>
     <p>
       <?php 
+        include 'Store.php';
+
         $data = file_get_contents("https://mockend.up.railway.app/api/products/");
         $products = json_decode($data);
 
